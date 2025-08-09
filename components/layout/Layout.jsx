@@ -11,7 +11,7 @@ function Layout({ children }) {
       </header>
 
       <div className="flex flex-col md:flex-row flex-1">
-        <aside className="bg-white w-full md:w-[250px] rounded-tr-[20px] text-grayy pt-6 pl-6 shadow md:relative md:bottom-[60px]">
+        <aside className="bg-white w-full md:w-[180px] lg:w-[250px] rounded-tr-[20px] text-grayy pt-6 pl-6 shadow md:relative md:bottom-[60px]">
           <p className="text-slategray font-bold text-lg md:text-xl mb-6">
             Welcome 👋
           </p>

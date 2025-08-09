@@ -1,9 +1,9 @@
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-function SignupPage() {
+function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -14,25 +14,21 @@ function SignupPage() {
     if (status === "authenticated") {
       router.replace("/");
     }
-  }, [router, status]);
+  }, [status, router]);
 
-  const handleSignup = async () => {
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
+  const handleSignIn = async () => {
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
     });
 
-    const data = await res.json();
-    console.log(data);
-    if (data.status === "success") {
-      router.push("/signin");
-    }
+    if (!res.error) router.push("/");
   };
 
   return (
     <div className="flex flex-col max-w-[300px] items-center m-auto mt-[60px] p-[50px] shadow-custom bg-white rounded-[20px]">
-      <h3 className="text-slategray mb-[50px] font-bold">Registeration Form</h3>
+      <h3 className="text-slategray mb-[50px] font-bold">Login Form</h3>
 
       <input
         value={email}
@@ -48,17 +44,17 @@ function SignupPage() {
         type="password"
         placeholder="password"
       />
-      <button onClick={handleSignup} className="btn cursor-pointer">
-        Register
+      <button onClick={handleSignIn} className="btn cursor-pointer">
+        Login
       </button>
       <div className="mt-[50px] text-grayy flex">
-        <p>Have an account?</p>
-        <Link className="text-bluee" href="/signin">
-          Sign In
+        <p>Create an account</p>
+        <Link className="text-bluee" href="/signup">
+          Sign Up
         </Link>
       </div>
     </div>
   );
 }
 
-export default SignupPage;
+export default SigninPage;
