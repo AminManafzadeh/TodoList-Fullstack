@@ -2,6 +2,17 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { RiMastodonLine } from "react-icons/ri";
 
 function Tasks({ data, next, back, fetchTodos }) {
+  const changeStatus = async (id, status) => {
+    const res = await fetch("/api/todos", {
+      method: "PATCH",
+      body: JSON.stringify({ id, status }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await res.json();
+    if (data.status === "success") fetchTodos();
+  };
+
   return (
     <div className="">
       {data?.map((item) => (
@@ -14,12 +25,18 @@ function Tasks({ data, next, back, fetchTodos }) {
           <h4 className="font-semibold text-slategray text-lg">{item.title}</h4>
           <div className="flex items-center justify-between">
             {back ? (
-              <button className="bg-[#f8eccf] text-[#e5a000] py-[5px] px-[10px] border-none rounded-[5px] flex items-center">
+              <button
+                onClick={() => changeStatus(item._id, back)}
+                className="bg-[#f8eccf] text-[#e5a000] py-[5px] px-[10px] border-none rounded-[5px] flex items-center"
+              >
                 <BiLeftArrow /> Back
               </button>
             ) : null}
             {next ? (
-              <button className="bg-[#cdf8ee] text-[ #03ab81] py-[5px] px-[10px] border-none rounded-[5px] flex items-center">
+              <button
+                onClick={() => changeStatus(item._id, next)}
+                className="bg-[#cdf8ee] text-[ #03ab81] py-[5px] px-[10px] border-none rounded-[5px] flex items-center"
+              >
                 Next <BiRightArrow />
               </button>
             ) : null}

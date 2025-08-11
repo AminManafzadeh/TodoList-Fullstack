@@ -2,7 +2,6 @@ import { getSession } from "next-auth/react";
 import connectDB from "../../utils/connectDB";
 import User from "../../models/User";
 import { sortTodos } from "../../utils/sortTodos";
-import { data } from "autoprefixer";
 
 export default async function handler(req, res) {
   try {

@@ -5,8 +5,8 @@ async function hashPassword(password) {
   return hashedPassword;
 }
 
-async function verifyPassword(password, secretKey) {
-  const isValid = await compare(password, secretKey);
+async function verifyPassword(password, hashedPassword) {
+  const isValid = await compare(password, hashedPassword);
 
   return isValid;
 }
