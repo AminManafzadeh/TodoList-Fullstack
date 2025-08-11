@@ -27,9 +27,8 @@ input {
 
 .home-page div {
   background-color: #fff;
-  margin: 20px;
+  margin-bottom: 10px;
   border-radius: 5px;
-  flex-grow: 1;
 }
 
 .home-page p {

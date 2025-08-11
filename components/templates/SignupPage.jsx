@@ -31,29 +31,35 @@ function SignupPage() {
   };
 
   return (
-    <div className="flex flex-col max-w-[300px] items-center m-auto mt-[60px] p-[50px] shadow-custom bg-white rounded-[20px]">
-      <h3 className="text-slategray mb-[50px] font-bold">Registeration Form</h3>
+    <div className="flex flex-col w-full max-w-sm sm:max-w-sm lg:max-w-md items-center mx-auto mt-10 p-6 sm:p-8 shadow-custom bg-white rounded-2xl">
+      <h3 className="text-slategray mb-12 font-bold text-lg sm:text-xl text-center">
+        Registration Form
+      </h3>
 
       <input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="mb-[30px] input"
+        className="mb-6 w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         type="text"
         placeholder="Email"
       />
       <input
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="mb-[30px] input"
+        className="mb-6 w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         type="password"
-        placeholder="password"
+        placeholder="Password"
       />
-      <button onClick={handleSignup} className="btn cursor-pointer">
+      <button
+        onClick={handleSignup}
+        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-lg transition"
+      >
         Register
       </button>
-      <div className="mt-[50px] text-grayy flex">
+
+      <div className="mt-8 text-grayy flex gap-2 text-sm sm:text-base">
         <p>Have an account?</p>
-        <Link className="text-bluee" href="/signin">
+        <Link className="text-blue-500 hover:underline" href="/signin">
           Sign In
         </Link>
       </div>

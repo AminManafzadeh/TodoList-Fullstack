@@ -18,7 +18,7 @@ function Tasks({ data, next, back, fetchTodos }) {
       {data?.map((item) => (
         <div
           key={item._id}
-          className="shadow-custom p-[10px] my-[25px] mx-[15px] tasks"
+          className="shadow-custom w-auto overflow-hidden p-[10px] my-[25px] mx-[15px] tasks"
         >
           <span className={item.status}></span>
           <RiMastodonLine />
