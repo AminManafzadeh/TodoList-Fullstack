@@ -22,7 +22,9 @@ function Tasks({ data, next, back, fetchTodos }) {
         >
           <span className={item.status}></span>
           <RiMastodonLine />
-          <h4 className="font-semibold text-slategray text-lg">{item.title}</h4>
+          <h4 className="font-semibold text-slategray text-lg mb-1">
+            {item.title}
+          </h4>
           <div className="flex items-center justify-between">
             {back ? (
               <button

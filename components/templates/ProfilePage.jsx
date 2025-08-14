@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import ProfileForm from "../module/ProfileForm";
 import ProfileData from "../module/ProfileData";
+import { useRouter } from "next/router";
 
 function ProfilePage() {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [data, setData] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     fetchProfile();
@@ -31,6 +33,7 @@ function ProfilePage() {
     const data = await res.json();
     console.log(data);
     if (data.status === "success") {
+      router.push("/");
     }
   };
 

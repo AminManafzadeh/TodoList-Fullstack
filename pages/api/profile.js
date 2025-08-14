@@ -2,8 +2,6 @@ import { getSession } from "next-auth/react";
 import connectDB from "../../utils/connectDB";
 import User from "../../models/User";
 import { verifyPassword } from "../../utils/auth";
-import { use } from "react";
-import { data } from "autoprefixer";
 
 export default async function handler(req, res) {
   try {
@@ -16,6 +14,7 @@ export default async function handler(req, res) {
   }
 
   const session = await getSession({ req });
+
   if (!session) {
     return res
       .status(401)
@@ -48,11 +47,9 @@ export default async function handler(req, res) {
       data: { name, lastName, email: session.user.email },
     });
   } else if (req.method === "GET") {
-    res
-      .status(200)
-      .json({
-        status: "success",
-        data: { name: user.name, lastName: user.lastName, email: user.email },
-      });
+    res.status(200).json({
+      status: "success",
+      data: { name: user.name, lastName: user.lastName, email: user.email },
+    });
   }
 }
